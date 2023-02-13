@@ -6,3 +6,4 @@
 - A basic file structure is present.
 - Basic readme and changelogs have been prepared.
 - The basic contributors file has been prepared.
+- Resolution has been changed to 1280x720.
