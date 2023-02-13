@@ -15,7 +15,7 @@ animations = [ {
 radius = 32.0
 height = 0.0
 
-[node name="Aya" type="KinematicBody2D"]
+[node name="Aya" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -23,3 +23,6 @@ frames = SubResource( 1 )
 
 [node name="AyaCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Aya_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Aya_mouse_exited"]
