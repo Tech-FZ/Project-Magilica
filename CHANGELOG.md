@@ -1,8 +1,8 @@
 # Clever Wars: Mahou Shoujo - Changelog
 
-## Preliminary Dev Release 1
+## MGGJ Release 1 (expected release on 14th March, 2023)
 
-- Aya in form as the Godot icon has been added, a script for her is there, she can be selected and moved.
+- Aya in form as the Godot icon has been added in form of a strategy and a battle character, a script for her in the strategy part is there, she can be selected and moved.
 - A basic file structure is present.
 - Basic readme and changelogs have been prepared.
 - The basic contributors file has been prepared.
