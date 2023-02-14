@@ -8,4 +8,5 @@
 - The basic contributors file has been prepared.
 - Resolution has been changed to 1280x720.
 - The layout for battles has been made.
-- The battle character of the samurai has been implemented.
+- The battle character of the samurai has been implemented (prototype assets).
+- The dragon king Genby has been prepared for battles (prototype assets).
