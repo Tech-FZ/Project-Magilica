@@ -11,3 +11,4 @@
 - The battle character of the samurai has been implemented (prototype assets).
 - The dragon king Genby has been prepared for battles (prototype assets).
 - The dragon king Suzaku has been prepared for battles (prototype assets).
+- The layout for a debug menu for custom battles has been added.
