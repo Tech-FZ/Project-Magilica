@@ -19,23 +19,16 @@ margin_right = 336.0
 margin_bottom = 668.0
 text = "Attack"
 
-[node name="ItemBtn" type="Button" parent="."]
-margin_left = 344.0
-margin_top = 648.0
-margin_right = 408.0
-margin_bottom = 668.0
-text = "Items"
-
 [node name="PassBtn" type="Button" parent="."]
-margin_left = 416.0
+margin_left = 352.0
 margin_top = 648.0
-margin_right = 480.0
+margin_right = 416.0
 margin_bottom = 668.0
 text = "Pass"
 
 [node name="RetreatBtn" type="Button" parent="."]
-margin_left = 488.0
+margin_left = 432.0
 margin_top = 648.0
-margin_right = 552.0
+margin_right = 496.0
 margin_bottom = 668.0
 text = "Retreat"
