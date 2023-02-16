@@ -13,4 +13,5 @@
 - The dragon king Suzaku has been prepared for battles (prototype assets).
 - The layout for a debug menu for custom battles has been added.
 - A to-do list has been added for programmers to keep track of what we still need.
-- The menu for custom battles would write battle data onto a text file, the battle scene receives that information, but it doesn't do anything with it yet.
+- The menu for custom battles would write battle data onto a text file, the battle scene receives that information and places the characters.
+- However, battles aren't possible yet.

@@ -3,7 +3,7 @@ A strategy game created for the MGGJ7.
 
 ## To-do
 
-- [ ] Making placement algorithm for battles
+- [X] Making placement algorithm for battles
 - [ ] Making more characters
 - [ ] Scripting battle mechanics
 - [ ] Making regular assets for the characters (done by artists)
