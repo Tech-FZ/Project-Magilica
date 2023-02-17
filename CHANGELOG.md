@@ -16,3 +16,4 @@
 - The menu for custom battles would write battle data onto a text file, the battle scene receives that information and places the characters.
 - However, battles aren't possible yet.
 - The debug menu is a bit more professional.
+- The health of each character is now listed in their scripts.
