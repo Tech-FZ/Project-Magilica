@@ -17,3 +17,4 @@
 - However, battles aren't possible yet.
 - The debug menu is a bit more professional.
 - The health of each character is now listed in their scripts.
+- For battles, there is also an entity list, we probably need that later.

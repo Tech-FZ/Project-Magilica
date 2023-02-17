@@ -9,6 +9,7 @@ var genby_scene = preload("res://assets/entities/dragony/dragon_kings/genby/Genb
 var suzaku_scene = preload("res://assets/entities/dragony/dragon_kings/suzaku/SuzakuBattle.tscn")
 var magilica_scene_instances = []
 var dragony_scene_instances = []
+var entity_list = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,7 @@ func _ready():
 		
 		if battle_config_army[0] == "aya":
 			magilica_army.append(battle_config_army[0])
+			entity_list.append("aya")
 			
 		elif battle_config_army[0] == "samurai":
 			var i = 0
@@ -33,9 +35,15 @@ func _ready():
 			while i < int(battle_config_army[1]):
 				magilica_army.append(battle_config_army[0])
 				i += 1
+				entity_list.append("samurai")
 				
 		elif battle_config_army[0] == "genby" or battle_config_army[0] == "suzaku":
 			dragony_army.append(battle_config_army[0])
+			if battle_config_army[0] == "genby":
+				entity_list.append("genby")
+			
+			elif battle_config_army[0] == "suzaku":
+				entity_list.append("suzaku")
 			
 	
 	var magilica_member_pos_x = 24
