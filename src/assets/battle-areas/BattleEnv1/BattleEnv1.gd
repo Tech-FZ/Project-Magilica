@@ -15,16 +15,19 @@ var current_attacker = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# That reads the battle.txt file
 	var battleFile = File.new()
 	battleFile.open("user://battle.txt", File.READ)
 	battle_config = battleFile.get_as_text()
 	battleFile.close()
 	
+	# That splits the file content
 	var battle_config_list = battle_config.split("\n")
 	var magilica_army = []
 	var dragony_army = []
 	
 	for battle_config_forces in battle_config_list:
+		# here it looks for all the characters
 		var battle_config_army = battle_config_forces.split("*")
 		
 		if battle_config_army[0] == "aya":
@@ -55,6 +58,7 @@ func _ready():
 	var i = 0
 	var j = 0
 	
+	# now all Magilican members are added here
 	for magilica_member in magilica_army:
 		if magilica_member == "aya":
 			magilica_scene_instances.append(aya_scene.instance())
@@ -84,6 +88,7 @@ func _ready():
 	i = 0
 	j = 0
 	
+	# Now all Dragonian members are added here
 	for dragony_member in dragony_army:
 		if dragony_member == "genby":
 			dragony_scene_instances.append(genby_scene.instance())
@@ -109,7 +114,8 @@ func _ready():
 			j = 0
 			
 		# insert more characters here
-			
+	
+	# Now the battle order is being defined
 	i = 0
 	
 	for magilica_entity in magilica_scene_instances:
@@ -139,6 +145,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# That's why you and the enemy can attack each other
 	if current_attacker < len(entity_list):
 		pass
 				
