@@ -130,6 +130,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if current_attacker < len(entity_list):
+		pass
+				
+	else:
+		current_attacker = 0
+	
 	if entity_list[current_attacker] == "aya":
 		$CurrentChar.text = "Aya"
 		
@@ -137,12 +143,15 @@ func _process(delta):
 			get_enemies()
 			
 		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
-			var enemy_to_attack = $EnemyList.get_selected_items()[0]
+			var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
+			print(enemy_to_attack)
 			
-			get_node(enemy_to_attack).health -= 75
+			get_node("./" + enemy_to_attack).health -= 75
 			
 			if get_node(enemy_to_attack).health <= 0:
 				remove_child(get_node(enemy_to_attack))
+				
+			
 			
 			if current_attacker < len(entity_list):
 				current_attacker += 1
@@ -150,10 +159,17 @@ func _process(delta):
 			else:
 				current_attacker = 0
 				
+			if $ConfirmBtn.pressed == false:
+				$EnemyList.clear()
+				
 	elif entity_list[current_attacker] == "suzaku":
-		var to_be_attacked = rand_range(4, get_child_count())
+		var to_be_attacked = rand_range(4, get_child_count() - 1)
 		
-		get_child(int(to_be_attacked)).health -= 200
+		if get_child(int(to_be_attacked)).name.begins_with("Aya"):
+			get_child(int(to_be_attacked)).health -= 200
+			
+		elif get_child(int(to_be_attacked)).name.begins_with("Samurai"):
+			get_child(int(to_be_attacked)).health -= 200
 		
 		if get_child(int(to_be_attacked)).health <= 0:
 			remove_child(get_child(int(to_be_attacked)))
