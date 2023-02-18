@@ -32,3 +32,16 @@ margin_top = 648.0
 margin_right = 496.0
 margin_bottom = 668.0
 text = "Retreat"
+
+[node name="ConfirmBtn" type="Button" parent="."]
+margin_left = 856.0
+margin_top = 648.0
+margin_right = 920.0
+margin_bottom = 668.0
+text = "Confirm"
+
+[node name="EnemyList" type="ItemList" parent="."]
+margin_left = 544.0
+margin_top = 640.0
+margin_right = 832.0
+margin_bottom = 704.0

@@ -10,6 +10,7 @@ var suzaku_scene = preload("res://assets/entities/dragony/dragon_kings/suzaku/Su
 var magilica_scene_instances = []
 var dragony_scene_instances = []
 var entity_list = []
+var current_attacker = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,8 +102,76 @@ func _ready():
 			dragony_member_pos_y = 24
 			dragony_member_pos_x -= 64
 			j = 0
+			
+	i = 0
+	
+	for magilica_entity in magilica_scene_instances:
+		if magilica_entity == aya_scene.instance():
+			entity_list.append("aya")
+			
+	i = 0
+	
+	for dragony_entity in dragony_scene_instances:
+		if dragony_entity == suzaku_scene.instance():
+			entity_list.append("suzaku")
+			
+	i = 0
+	
+	for dragony_entity in dragony_scene_instances:
+		if dragony_entity == genby_scene.instance():
+			entity_list.append("genby")
+			
+	i = 0
+	
+	for magilica_entity in magilica_scene_instances:
+		if magilica_entity == samurai_scene.instance():
+			entity_list.append("samurai")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if entity_list[current_attacker] == "aya":
+		$CurrentChar.text = "Aya"
+		
+		if $AttackBtn.pressed:
+			get_enemies()
+			
+		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
+			var enemy_to_attack = $EnemyList.get_selected_items()[0]
+			
+			get_node(enemy_to_attack).health -= 75
+			
+			if get_node(enemy_to_attack).health <= 0:
+				remove_child(get_node(enemy_to_attack))
+			
+			if current_attacker < len(entity_list):
+				current_attacker += 1
+				
+			else:
+				current_attacker = 0
+				
+	elif entity_list[current_attacker] == "suzaku":
+		var to_be_attacked = rand_range(4, get_child_count())
+		
+		get_child(int(to_be_attacked)).health -= 200
+		
+		if get_child(int(to_be_attacked)).health <= 0:
+			remove_child(get_child(int(to_be_attacked)))
+		
+		if current_attacker < len(entity_list):
+				current_attacker += 1
+				
+		else:
+			current_attacker = 0
+
+func get_enemies():
+	var i = 4
+	
+	while i < get_child_count():
+		if get_child(i).name.begins_with("Suzaku"):
+			$EnemyList.add_item(get_child(i).name)
+			
+		elif get_child(i).name.begins_with("Genby"):
+			$EnemyList.add_item(get_child(i).name)
+		
+		i += 1
