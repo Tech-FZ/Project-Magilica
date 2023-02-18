@@ -163,7 +163,7 @@ func _process(delta):
 				$EnemyList.clear()
 				
 	elif entity_list[current_attacker] == "suzaku":
-		var to_be_attacked = rand_range(4, get_child_count() - 1)
+		var to_be_attacked = rand_range(6, get_child_count() - 1)
 		
 		if get_child(int(to_be_attacked)).name.begins_with("Aya"):
 			get_child(int(to_be_attacked)).health -= 200
@@ -171,7 +171,10 @@ func _process(delta):
 		elif get_child(int(to_be_attacked)).name.begins_with("Samurai"):
 			get_child(int(to_be_attacked)).health -= 200
 		
-		if get_child(int(to_be_attacked)).health <= 0:
+		print(get_child(int(to_be_attacked)).health)
+		var health_of_char = get_child(int(to_be_attacked)).health
+		
+		if health_of_char <= 0:
 			remove_child(get_child(int(to_be_attacked)))
 		
 		if current_attacker < len(entity_list):
@@ -181,7 +184,7 @@ func _process(delta):
 			current_attacker = 0
 
 func get_enemies():
-	var i = 4
+	var i = 6
 	
 	while i < get_child_count():
 		if get_child(i).name.begins_with("Suzaku"):

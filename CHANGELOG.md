@@ -18,4 +18,4 @@
 - The debug menu is a bit more professional.
 - The health of each character is now listed in their scripts.
 - For battles, there is also an entity list, we probably need that later.
-- You should be able to battle now, but you aren't.
+- You should be able to battle now.
