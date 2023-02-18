@@ -7,6 +7,7 @@ var aya_scene = preload("res://assets/entities/magilica/magical-girls/aya/AyaBat
 var samurai_scene = preload("res://assets/entities/magilica/samurai/SamuraiBattle.tscn")
 var genby_scene = preload("res://assets/entities/dragony/dragon_kings/genby/GenbyBattle.tscn")
 var suzaku_scene = preload("res://assets/entities/dragony/dragon_kings/suzaku/SuzakuBattle.tscn")
+# insert more characters here
 var magilica_scene_instances = []
 var dragony_scene_instances = []
 var entity_list = []
@@ -45,6 +46,8 @@ func _ready():
 			
 			elif battle_config_army[0] == "suzaku":
 				entity_list.append("suzaku")
+				
+		# insert more characters here
 			
 	
 	var magilica_member_pos_x = 24
@@ -72,6 +75,8 @@ func _ready():
 			magilica_member_pos_y = 24
 			magilica_member_pos_x += 64
 			j = 0
+			
+		# insert more characters here
 		
 	
 	var dragony_member_pos_x = 1256
@@ -103,6 +108,8 @@ func _ready():
 			dragony_member_pos_x -= 64
 			j = 0
 			
+		# insert more characters here
+			
 	i = 0
 	
 	for magilica_entity in magilica_scene_instances:
@@ -126,6 +133,8 @@ func _ready():
 	for magilica_entity in magilica_scene_instances:
 		if magilica_entity == samurai_scene.instance():
 			entity_list.append("samurai")
+			
+	# insert more characters here
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -285,6 +294,8 @@ func _process(delta):
 				
 		else:
 			current_attacker = 0
+			
+		# insert more characters here
 
 func get_enemies():
 	var i = 6
@@ -295,5 +306,7 @@ func get_enemies():
 			
 		elif get_child(i).name.begins_with("Genby"):
 			$EnemyList.add_item(get_child(i).name)
+			
+		# insert more enemies here
 		
 		i += 1
