@@ -12,6 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	# applies all battle participants
 	if $StartBtn.pressed:
 		if $AyaCheckbox.pressed:
 			write_as_txt += "aya*1\n"
@@ -24,10 +25,12 @@ func _process(_delta):
 			
 		if $SuzakuCheckbox.pressed:
 			write_as_txt += "suzaku*1\n"
-			
+		
+		# creates battle.txt
 		var battleFile = File.new()
 		battleFile.open("user://battle.txt", File.WRITE)
 		battleFile.store_string(write_as_txt)
 		battleFile.close()
 		
+		# switches to the battle
 		var _changeScene = get_tree().change_scene("res://assets/battle-areas/BattleEnv1/BattleEnv1.tscn")
