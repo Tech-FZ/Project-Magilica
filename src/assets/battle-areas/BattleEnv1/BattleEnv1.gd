@@ -149,6 +149,60 @@ func _process(delta):
 			get_node("./" + enemy_to_attack).health -= 75
 			
 			if get_node(enemy_to_attack).health <= 0:
+				if get_node(enemy_to_attack).name.begins_with("Suzaku"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "suzaku":
+							entity_list.remove(k)
+							break
+							
+				elif get_node(enemy_to_attack).name.begins_with("Genby"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "genby":
+							entity_list.remove(k)
+							break
+							
+				remove_child(get_node(enemy_to_attack))
+				
+			
+			
+			if current_attacker < len(entity_list):
+				current_attacker += 1
+				
+			else:
+				current_attacker = 0
+				
+			if $ConfirmBtn.pressed == false:
+				$EnemyList.clear()
+				
+	elif entity_list[current_attacker] == "samurai":
+		$CurrentChar.text = "Samurai"
+		
+		if $AttackBtn.pressed:
+			get_enemies()
+			
+		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
+			var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
+			print(enemy_to_attack)
+			
+			get_node("./" + enemy_to_attack).health -= 15
+			
+			if get_node(enemy_to_attack).health <= 0:
+				if get_node(enemy_to_attack).name.begins_with("Suzaku"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "suzaku":
+							entity_list.remove(k)
+							break
+							
+				elif get_node(enemy_to_attack).name.begins_with("Genby"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "genby":
+							entity_list.remove(k)
+							break
+				
 				remove_child(get_node(enemy_to_attack))
 				
 			
@@ -175,6 +229,55 @@ func _process(delta):
 		var health_of_char = get_child(int(to_be_attacked)).health
 		
 		if health_of_char <= 0:
+			if get_child(int(to_be_attacked)).name.begins_with("Aya"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "aya":
+						entity_list.remove(k)
+						break
+							
+			elif get_child(int(to_be_attacked)).name.begins_with("Samurai"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "samurai":
+						entity_list.remove(k)
+						break
+							
+			remove_child(get_child(int(to_be_attacked)))
+		
+		if current_attacker < len(entity_list):
+				current_attacker += 1
+				
+		else:
+			current_attacker = 0
+			
+	elif entity_list[current_attacker] == "genby":
+		var to_be_attacked = rand_range(6, get_child_count() - 1)
+		
+		if get_child(int(to_be_attacked)).name.begins_with("Aya"):
+			get_child(int(to_be_attacked)).health -= 200
+			
+		elif get_child(int(to_be_attacked)).name.begins_with("Samurai"):
+			get_child(int(to_be_attacked)).health -= 200
+		
+		print(get_child(int(to_be_attacked)).health)
+		var health_of_char = get_child(int(to_be_attacked)).health
+		
+		if health_of_char <= 0:
+			if get_child(int(to_be_attacked)).name.begins_with("Aya"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "aya":
+						entity_list.remove(k)
+						break
+							
+			elif get_child(int(to_be_attacked)).name.begins_with("Samurai"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "samurai":
+						entity_list.remove(k)
+						break
+						
 			remove_child(get_child(int(to_be_attacked)))
 		
 		if current_attacker < len(entity_list):
