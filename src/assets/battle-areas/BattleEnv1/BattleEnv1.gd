@@ -72,8 +72,11 @@ func _ready():
 			#get_child(get_child_count() - 1).position.y = magilica_member_pos_y
 		
 		elif magilica_member == "samurai":
-			magilica_scene_instances.append(samurai_scene.instance())
+			#magilica_scene_instances.append(samurai_scene.instance())
+			#$PartyContainer.add_child(magilica_scene_instances[i])
+			magilica_scene_instances.append(battle_entity_script.instance())
 			$PartyContainer.add_child(magilica_scene_instances[i])
+			$PartyContainer.get_child(i).create(magilica_member)
 			#get_child(get_child_count() - 1).position.x = magilica_member_pos_x
 			#get_child(get_child_count() - 1).position.y = magilica_member_pos_y
 		
@@ -246,10 +249,10 @@ func _process(delta):
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
 		if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-			$EnemyContainer.get_child(current_attacker).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 		elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-			$EnemyContainer.get_child(current_attacker).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 		print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 		var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]

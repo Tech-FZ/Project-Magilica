@@ -36,6 +36,9 @@ func create(entity_id):
 	if entity_id == 'homura':
 		entity = load("res://assets/entities/magilica/magical-girls/homura/HomuraBattle.tscn")
 	
+	if entity_id == 'samurai':
+		entity = load("res://assets/entities/magilica/samurai/SamuraiBattle.tscn")
+	
 	if entity_id == 'suzaku':
 		entity = load("res://assets/entities/dragony/dragon_kings/suzaku/SuzakuBattle.tscn")
 	if entity_id == 'seiryu':
