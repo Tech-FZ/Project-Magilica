@@ -1,6 +1,6 @@
 extends "res://assets/entities/BattleEntity.gd"
 
-# standard stats girl
+# standard stats dragon king
 
 export(int) var genby_hp = 1800
 export(int) var genby_atk = 180
