@@ -167,8 +167,10 @@ func _process(delta):
 		
 		if $AttackBtn.pressed:
 			get_enemies()
+			$ConfirmBtn.disabled = false
 			
 		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
+			$ConfirmBtn.disabled = true
 			var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
 			print(enemy_to_attack)
 			
@@ -209,8 +211,10 @@ func _process(delta):
 		
 		if $AttackBtn.pressed:
 			get_enemies()
+			$ConfirmBtn.disabled = false
 			
 		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
+			$ConfirmBtn.disabled = true
 			var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
 			print(enemy_to_attack)
 			
