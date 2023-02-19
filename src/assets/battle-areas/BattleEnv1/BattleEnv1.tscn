@@ -38,6 +38,7 @@ margin_left = 856.0
 margin_top = 648.0
 margin_right = 920.0
 margin_bottom = 668.0
+action_mode = 0
 text = "Confirm"
 
 [node name="EnemyList" type="ItemList" parent="."]

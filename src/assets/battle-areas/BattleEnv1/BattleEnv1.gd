@@ -145,7 +145,7 @@ func _ready():
 	for magilica_entity in magilica_scene_instances:
 		if magilica_entity == aya_scene.instance():
 			entity_list.append("aya")
-			
+	
 	i = 0
 	
 	for magilica_entity in magilica_scene_instances:
@@ -202,7 +202,7 @@ func _process(delta):
 				current_attacker += 1
 				
 			if $ConfirmBtn.pressed == false:
-				$EnemyList.clear()	
+				$EnemyList.clear()
 		
 	elif entity_list[current_attacker] == "samurai":
 		$CurrentChar.text = "Samurai"
@@ -248,31 +248,32 @@ func _process(delta):
 	elif entity_list[current_attacker] == "suzaku":
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
-		if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-			$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-			
-		elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-			$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-		
-		print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
-		var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
-		
-		if health_of_char <= 0:
+		if $PartyContainer.get_child_count() > 0:
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				var k = 0
-				while k < len(entity_list):
-					if entity_list[k] == "aya":
-						entity_list.remove(k)
-						break
-							
+				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				var k = 0
-				while k < len(entity_list):
-					if entity_list[k] == "samurai":
-						entity_list.remove(k)
-						break
+				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+		
+			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
+			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
+		
+			if health_of_char <= 0:
+				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "aya":
+							entity_list.remove(k)
+							break
 							
-			$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "samurai":
+							entity_list.remove(k)
+							break
+							
+				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
 		
 		if current_attacker >= len(entity_list):
 				current_attacker = 0
@@ -283,31 +284,32 @@ func _process(delta):
 	elif entity_list[current_attacker] == "genby":
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		print(current_attacker)
-		if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-			$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-			
-		elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-			$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-		
-		print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
-		var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
-		
-		if health_of_char <= 0:
+		if $PartyContainer.get_child_count() > 0:
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				var k = 0
-				while k < len(entity_list):
-					if entity_list[k] == "aya":
-						entity_list.remove(k)
-						break
-							
+				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				var k = 0
-				while k < len(entity_list):
-					if entity_list[k] == "samurai":
-						entity_list.remove(k)
-						break
+				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+		
+			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
+			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
+		
+			if health_of_char <= 0:
+				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "aya":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "samurai":
+							entity_list.remove(k)
+							break
 						
-			$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
+				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
 		
 		if current_attacker >= len(entity_list):
 				current_attacker = 0
