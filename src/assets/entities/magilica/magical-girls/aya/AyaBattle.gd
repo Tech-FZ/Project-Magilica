@@ -1,15 +1,20 @@
-extends KinematicBody2D
+extends "res://assets/entities/BattleEntity.gd"
 
+# standard stats girl
 
-# Declare member variables here. Examples:
-var health = 2000
+export(int) var aya_hp = 1000
+export(int) var aya_atk = 100
+export(int) var aya_def = 100
+export(int) var aya_spd = 10
 
+# aya
+func get_stats():
+	return {
+		hp=aya_hp, 
+		atk=aya_atk, 
+		def=aya_def, 
+		spd=aya_spd
+	}
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
