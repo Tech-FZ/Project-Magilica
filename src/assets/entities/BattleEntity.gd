@@ -39,17 +39,20 @@ func create(entity_id):
 	if entity_id == 'suzaku':
 		entity = load("res://assets/entities/dragony/dragon_kings/suzaku/SuzakuBattle.tscn")
 	if entity_id == 'seiryu':
-		entity = load("res://assets/entities/dragony/dragon_kings/seiryu/SeiryuBattle.tscn")
+		entity = load("res://assets/entities/dragony/dragon_kings/seiryu/SeiryuPrototype.tscn")
 	if entity_id == 'genby':
 		entity = load("res://assets/entities/dragony/dragon_kings/genby/GenbyBattle.tscn")
 	if entity_id == 'dilong':
-		entity = load("res://assets/entities/magilica/magical-girls/dilong/DilongBattle.tscn")
-	
-	# populate entity stats
-	stats = entity.get_stats()
+		entity = load("res://assets/entities/dragony/dragon_kings/dilong/DilongBattle.tscn")
 	
 	# attach entity as child (for sprite and other attributes)
-	add_child(entity)
+	var entity_instance = entity.instance()
+	add_child(entity_instance)
+	
+	# populate entity stats
+	stats = entity_instance.get_stats()
+	
+	
 	
 	# set flag to assure main loop that this object is valid
 	initialized = true
