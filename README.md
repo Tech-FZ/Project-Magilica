@@ -1,5 +1,5 @@
 # Project Magilica
-A strategy game created for the MGGJ7.
+An RPG-like game created for the MGGJ7.
 
 ## To-do
 
