@@ -4,6 +4,9 @@ extends Node2D
 # Declare member variables here. Examples:
 var battle_config = ""
 var aya_scene = preload("res://assets/entities/magilica/magical-girls/aya/AyaBattle.tscn")
+var chuya_scene = preload("res://assets/entities/magilica/magical-girls/chuya/ChuyaBattle.tscn")
+var himari_scene = preload("res://assets/entities/magilica/magical-girls/himari/HimariBattle.tscn")
+var homura_scene = preload("res://assets/entities/magilica/magical-girls/homura/HomuraBattle.tscn")
 var samurai_scene = preload("res://assets/entities/magilica/samurai/SamuraiBattle.tscn")
 var genby_scene = preload("res://assets/entities/dragony/dragon_kings/genby/GenbyBattle.tscn")
 var suzaku_scene = preload("res://assets/entities/dragony/dragon_kings/suzaku/SuzakuBattle.tscn")
@@ -41,6 +44,14 @@ func _ready():
 			magilica_army.append(battle_config_army[0])
 			entity_list.append("chuya")
 			
+		elif battle_config_army[0] == "himari":
+			magilica_army.append(battle_config_army[0])
+			entity_list.append("himari")
+			
+		elif battle_config_army[0] == "homura":
+			magilica_army.append(battle_config_army[0])
+			entity_list.append("homura")
+			
 		elif battle_config_army[0] == "samurai":
 			var i = 0
 			
@@ -76,6 +87,22 @@ func _ready():
 			$PartyContainer.get_child(i).position.y = magilica_member_pos_y
 			
 		elif magilica_member == "chuya":
+			#magilica_scene_instances.append(aya_scene.instance())
+			magilica_scene_instances.append(battle_entity_script.instance())
+			$PartyContainer.add_child(magilica_scene_instances[i])
+			$PartyContainer.get_child(i).create(magilica_member)
+			$PartyContainer.get_child(i).position.x = magilica_member_pos_x
+			$PartyContainer.get_child(i).position.y = magilica_member_pos_y
+			
+		elif magilica_member == "himari":
+			#magilica_scene_instances.append(aya_scene.instance())
+			magilica_scene_instances.append(battle_entity_script.instance())
+			$PartyContainer.add_child(magilica_scene_instances[i])
+			$PartyContainer.get_child(i).create(magilica_member)
+			$PartyContainer.get_child(i).position.x = magilica_member_pos_x
+			$PartyContainer.get_child(i).position.y = magilica_member_pos_y
+			
+		elif magilica_member == "homura":
 			#magilica_scene_instances.append(aya_scene.instance())
 			magilica_scene_instances.append(battle_entity_script.instance())
 			$PartyContainer.add_child(magilica_scene_instances[i])
@@ -148,31 +175,43 @@ func _ready():
 	i = 0
 	
 	for dragony_entity in dragony_scene_instances:
-		if dragony_entity == genby_scene.instance():
+		if dragony_entity.get_child(0) == genby_scene.instance():
 			entity_list.append("genby")
 			
 	i = 0
 	
 	for dragony_entity in dragony_scene_instances:
-		if dragony_entity == suzaku_scene.instance():
+		if dragony_entity.get_child(0) == suzaku_scene.instance():
 			entity_list.append("suzaku")
+			
+	i = 0
+	
+	for magilica_entity in magilica_scene_instances:
+		if magilica_entity.get_child(0) == himari_scene.instance():
+			entity_list.append("himari")
+			
+	i = 0
+	
+	for magilica_entity in magilica_scene_instances:
+		if magilica_entity.get_child(0) == homura_scene.instance():
+			entity_list.append("homura")
 	
 	i = 0
 	
 	for magilica_entity in magilica_scene_instances:
-		if magilica_entity == aya_scene.instance():
+		if magilica_entity.get_child(0) == aya_scene.instance():
 			entity_list.append("aya")
 	
 	i = 0
 	
 	for magilica_entity in magilica_scene_instances:
-		if magilica_entity == samurai_scene.instance():
+		if magilica_entity.get_child(0) == samurai_scene.instance():
 			entity_list.append("samurai")
 			
 	i = 0
 	
 	for magilica_entity in magilica_scene_instances:
-		if magilica_entity == aya_scene.instance():
+		if magilica_entity.get_child(0) == chuya_scene.instance():
 			entity_list.append("chuya")
 			
 	# insert more characters here
@@ -229,6 +268,12 @@ func _process(delta):
 	elif entity_list[current_attacker] == "chuya":
 		$CurrentChar.text = "Chuya"
 		
+	elif entity_list[current_attacker] == "himari":
+		$CurrentChar.text = "Himari"
+		
+	elif entity_list[current_attacker] == "homura":
+		$CurrentChar.text = "Homura"
+		
 	elif entity_list[current_attacker] == "samurai":
 		$CurrentChar.text = "Samurai"
 		
@@ -278,13 +323,19 @@ func _process(delta):
 		
 		if $PartyContainer.get_child_count() > 0:
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
-				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			
+			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
+				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				
+			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
+				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
@@ -301,6 +352,20 @@ func _process(delta):
 					var k = 0
 					while k < len(entity_list):
 						if entity_list[k] == "chuya":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "himari":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "homura":
 							entity_list.remove(k)
 							break
 							
@@ -329,13 +394,19 @@ func _process(delta):
 		print(current_attacker)
 		if $PartyContainer.get_child_count() > 0:
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
-				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 	
+			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
+				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				
+			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
+				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
@@ -352,6 +423,20 @@ func _process(delta):
 					var k = 0
 					while k < len(entity_list):
 						if entity_list[k] == "chuya":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "himari":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "homura":
 							entity_list.remove(k)
 							break
 							

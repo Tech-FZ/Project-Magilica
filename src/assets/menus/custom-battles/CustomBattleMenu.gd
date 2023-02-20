@@ -20,6 +20,12 @@ func _process(_delta):
 		if $ChuyaCheckbox.pressed:
 			write_as_txt += "chuya*1\n"
 			
+		if $HimariCheckbox.pressed:
+			write_as_txt += "himari*1\n"
+			
+		if $HomuraCheckbox.pressed:
+			write_as_txt += "homura*1\n"
+			
 		if $SamuraiCheckbox.pressed:
 			write_as_txt += "samurai*" + str($SamuraiSpinBox.value) + "\n"
 			
