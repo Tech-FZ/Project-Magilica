@@ -14,6 +14,13 @@ margin_right = 123.0
 margin_bottom = 224.0
 text = "Aya"
 
+[node name="ChuyaCheckbox" type="CheckBox" parent="."]
+margin_left = 72.0
+margin_top = 264.0
+margin_right = 138.0
+margin_bottom = 288.0
+text = "Chuya"
+
 [node name="SamuraiSpinBox" type="SpinBox" parent="."]
 margin_left = 184.0
 margin_top = 232.0

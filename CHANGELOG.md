@@ -20,3 +20,4 @@
 - For battles, there is also an entity list, we probably need that later.
 - You should be able to battle now.
 - The battle UI is now working as intended.
+- It seems that Chuya is OP. Thanks for making it possible to implement her, KonaTizer.

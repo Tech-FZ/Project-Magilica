@@ -37,6 +37,10 @@ func _ready():
 			magilica_army.append(battle_config_army[0])
 			entity_list.append("aya")
 			
+		elif battle_config_army[0] == "chuya":
+			magilica_army.append(battle_config_army[0])
+			entity_list.append("chuya")
+			
 		elif battle_config_army[0] == "samurai":
 			var i = 0
 			
@@ -70,6 +74,12 @@ func _ready():
 			$PartyContainer.get_child(i).create(magilica_member)
 			#get_child(get_child_count() - 1).position.x = magilica_member_pos_x
 			#get_child(get_child_count() - 1).position.y = magilica_member_pos_y
+			
+		elif magilica_member == "chuya":
+			#magilica_scene_instances.append(aya_scene.instance())
+			magilica_scene_instances.append(battle_entity_script.instance())
+			$PartyContainer.add_child(magilica_scene_instances[i])
+			$PartyContainer.get_child(i).create(magilica_member)
 		
 		elif magilica_member == "samurai":
 			#magilica_scene_instances.append(samurai_scene.instance())
@@ -152,6 +162,12 @@ func _ready():
 		if magilica_entity == samurai_scene.instance():
 			entity_list.append("samurai")
 			
+	i = 0
+	
+	for magilica_entity in magilica_scene_instances:
+		if magilica_entity == aya_scene.instance():
+			entity_list.append("chuya")
+			
 	# insert more characters here
 	print(len(entity_list))
 
@@ -159,9 +175,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# That's why you and the enemy can attack each other
-	if current_attacker >= len(entity_list):
-		current_attacker = 0
-	
 	if entity_list[current_attacker] == "aya":
 		$CurrentChar.text = "Aya"
 		
@@ -205,6 +218,9 @@ func _process(delta):
 				
 		#	if $ConfirmBtn.pressed == false:
 		#		$EnemyList.clear()
+		
+	elif entity_list[current_attacker] == "chuya":
+		$CurrentChar.text = "Chuya"
 		
 	elif entity_list[current_attacker] == "samurai":
 		$CurrentChar.text = "Samurai"
@@ -271,6 +287,13 @@ func _process(delta):
 							entity_list.remove(k)
 							break
 							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "chuya":
+							entity_list.remove(k)
+							break
+							
 				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
 					var k = 0
 					while k < len(entity_list):
@@ -281,10 +304,14 @@ func _process(delta):
 				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
 		
 		if current_attacker >= len(entity_list):
-				current_attacker = 0
+			current_attacker = 0
+			print(entity_list[current_attacker])
 				
 		else:
 			current_attacker += 1
+			if current_attacker >= len(entity_list):
+				current_attacker = 0
+				print(entity_list[current_attacker])
 			
 	elif entity_list[current_attacker] == "genby":
 		$EnemyList.clear()
@@ -308,6 +335,13 @@ func _process(delta):
 							entity_list.remove(k)
 							break
 							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "chuya":
+							entity_list.remove(k)
+							break
+							
 				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
 					var k = 0
 					while k < len(entity_list):
@@ -318,15 +352,16 @@ func _process(delta):
 				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
 		
 		if current_attacker >= len(entity_list):
-				current_attacker = 0
+			current_attacker = 0
+			print(entity_list[current_attacker])
 				
 		else:
 			current_attacker += 1
+			if current_attacker >= len(entity_list):
+				current_attacker = 0
+				print(entity_list[current_attacker])
 			
 		# insert more characters here
-		
-	if current_attacker >= len(entity_list):
-		current_attacker = 0
 
 func get_enemies():
 	var i = 0
@@ -348,6 +383,7 @@ func _on_ConfirmBtn_pressed():
 	$ConfirmBtn.disabled = true
 	var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
 	print(enemy_to_attack)
+	print(entity_list[current_attacker])
 			
 	$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 			
@@ -369,11 +405,15 @@ func _on_ConfirmBtn_pressed():
 		$EnemyContainer.remove_child(
 			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 				
+	if current_attacker >= len(entity_list):
+		current_attacker = 0
+		print(entity_list[current_attacker])
+				
+	else:
+		current_attacker += 1
 		if current_attacker >= len(entity_list):
 			current_attacker = 0
-				
-		else:
-			current_attacker += 1
+			print(entity_list[current_attacker])
 			
 	$EnemyList.clear()
 
