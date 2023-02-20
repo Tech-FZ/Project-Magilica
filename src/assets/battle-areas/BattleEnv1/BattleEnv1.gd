@@ -165,91 +165,92 @@ func _process(delta):
 	if entity_list[current_attacker] == "aya":
 		$CurrentChar.text = "Aya"
 		
-		if $AttackBtn.pressed:
-			get_enemies()
-			$ConfirmBtn.disabled = false
+		#if $AttackBtn.pressed:
+		#	get_enemies()
+		#	$ConfirmBtn.disabled = false
 			
-		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
-			$ConfirmBtn.disabled = true
-			var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
-			print(enemy_to_attack)
+		#if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
+		#	$ConfirmBtn.disabled = true
+		#	var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
+		#	print(enemy_to_attack)
 			
-			$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+		#	$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 			
-			if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
-				if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
-					var k = 0
-					while k < len(entity_list):
-						if entity_list[k] == "suzaku":
-							entity_list.remove(k)
-							break
-							
-				elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
-					var k = 0
-					while k < len(entity_list):
-						if entity_list[k] == "genby":
-							entity_list.remove(k)
-							break
-							
-				$EnemyContainer.remove_child(
-					$EnemyContainer.get_child(
-						$EnemyList.get_selected_items()[0]))
+		#	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
+		#		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
+		#			var k = 0
+		#			while k < len(entity_list):
+		#				if entity_list[k] == "suzaku":
+		#					entity_list.remove(k)
+		#					break
+		#					
+		#		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
+		#			var k = 0
+		#			while k < len(entity_list):
+		#				if entity_list[k] == "genby":
+		#					entity_list.remove(k)
+		#					break
+		#					
+		#		$EnemyContainer.remove_child(
+		#			$EnemyContainer.get_child(
+		#				$EnemyList.get_selected_items()[0]))
+		#		
+		#	
+		#	
+		#	if current_attacker >= len(entity_list):
+		#		current_attacker = 0
+		#		
+		#	else:
+		#		current_attacker += 1
 				
-			
-			
-			if current_attacker >= len(entity_list):
-				current_attacker = 0
-				
-			else:
-				current_attacker += 1
-				
-			if $ConfirmBtn.pressed == false:
-				$EnemyList.clear()
+		#	if $ConfirmBtn.pressed == false:
+		#		$EnemyList.clear()
 		
 	elif entity_list[current_attacker] == "samurai":
 		$CurrentChar.text = "Samurai"
 		
-		if $AttackBtn.pressed:
-			get_enemies()
-			$ConfirmBtn.disabled = false
+		#if $AttackBtn.pressed:
+		#	get_enemies()
+		#	$ConfirmBtn.disabled = false
 			
-		if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
-			$ConfirmBtn.disabled = true
-			var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
-			print(enemy_to_attack)
-			
-			$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-			
-			if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
-				if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
-					var k = 0
-					while k < len(entity_list):
-						if entity_list[k] == "suzaku":
-							entity_list.remove(k)
-							break
-							
-				elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
-					var k = 0
-					while k < len(entity_list):
-						if entity_list[k] == "genby":
-							entity_list.remove(k)
-							break
-				
-				$EnemyContainer.remove_child(
-					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-				
-			
-			
-			if current_attacker >= len(entity_list):
-				current_attacker = 0
-				
-		else:
-			current_attacker += 1
-				
-			if $ConfirmBtn.pressed == false:
-				$EnemyList.clear()
+		#if $ConfirmBtn.pressed and $EnemyList.get_selected_items() != null:
+		#	$ConfirmBtn.disabled = true
+		#	var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
+		#	print(enemy_to_attack)
+		#	
+		#	$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+		#	
+		#	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
+		#		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
+		#			var k = 0
+		#			while k < len(entity_list):
+		#				if entity_list[k] == "suzaku":
+		#					entity_list.remove(k)
+		#					break
+		#					
+		#		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
+		#			var k = 0
+		#			while k < len(entity_list):
+		#				if entity_list[k] == "genby":
+		#					entity_list.remove(k)
+		#					break
+		#		
+		#		$EnemyContainer.remove_child(
+		#			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+		#		
+		#	
+		#	
+		#	if current_attacker >= len(entity_list):
+		#		current_attacker = 0
+		#		
+		#else:
+		#	current_attacker += 1
+		#		
+		#	if $ConfirmBtn.pressed == false:
+		#		$EnemyList.clear()
 				
 	elif entity_list[current_attacker] == "suzaku":
+		$EnemyList.clear()
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
 		if $PartyContainer.get_child_count() > 0:
@@ -286,6 +287,7 @@ func _process(delta):
 			current_attacker += 1
 			
 	elif entity_list[current_attacker] == "genby":
+		$EnemyList.clear()
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		print(current_attacker)
 		if $PartyContainer.get_child_count() > 0:
@@ -340,3 +342,42 @@ func get_enemies():
 		# insert more enemies here
 		
 		i += 1
+
+
+func _on_ConfirmBtn_pressed():
+	$ConfirmBtn.disabled = true
+	var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
+	print(enemy_to_attack)
+			
+	$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+			
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
+		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
+			var k = 0
+			while k < len(entity_list):
+				if entity_list[k] == "suzaku":
+					entity_list.remove(k)
+					break
+							
+		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
+			var k = 0
+			while k < len(entity_list):
+				if entity_list[k] == "genby":
+					entity_list.remove(k)
+					break
+				
+		$EnemyContainer.remove_child(
+			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+				
+		if current_attacker >= len(entity_list):
+			current_attacker = 0
+				
+		else:
+			current_attacker += 1
+			
+	$EnemyList.clear()
+
+
+func _on_AttackBtn_pressed():
+	get_enemies()
+	$ConfirmBtn.disabled = false

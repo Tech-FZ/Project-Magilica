@@ -59,3 +59,6 @@ margin_top = 24.0
 margin_right = 1256.0
 margin_bottom = 624.0
 grow_horizontal = 0
+
+[connection signal="pressed" from="AttackBtn" to="." method="_on_AttackBtn_pressed"]
+[connection signal="pressed" from="ConfirmBtn" to="." method="_on_ConfirmBtn_pressed"]
