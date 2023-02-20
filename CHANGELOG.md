@@ -1,4 +1,4 @@
-# Clever Wars: Mahou Shoujo - Changelog
+# Project Magilica
 
 ## MGGJ Release 1 (expected release on 14th March, 2023)
 

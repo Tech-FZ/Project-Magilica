@@ -1,4 +1,4 @@
-# Clever Wars: Mahou Shoujo
+# Project Magilica
 A strategy game created for the MGGJ7.
 
 ## To-do

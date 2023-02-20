@@ -1,4 +1,4 @@
-# Clever Wars: Mahou Shoujo - Contributors
+# Project Magilica - Contributors
 
 ## Programming
 
@@ -13,8 +13,7 @@ Zejbo Sexbaum
 ## Art
 
 Lucien
-RunYouCleverPotatoAndRemember
-nia
+KonaTizer
 
 ## Music and sound effects
 

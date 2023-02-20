@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Clever Wars: Mahou Shoujo"
+config/name="Project Magilica"
 run/main_scene="res://assets/menus/custom-battles/CustomBattleMenu.tscn"
 config/icon="res://icon.png"
 
