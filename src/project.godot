@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Project Magilica"
-run/main_scene="res://assets/menus/custom-battles/CustomBattleMenu.tscn"
+run/main_scene="res://assets/menus/main-menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]

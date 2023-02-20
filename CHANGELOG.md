@@ -22,3 +22,4 @@
 - The battle UI is now working as intended.
 - It seems that Chuya is OP. Thanks for making it possible to implement her, KonaTizer.
 - The positioning issue has been fixed.
+- A main menu is available.
