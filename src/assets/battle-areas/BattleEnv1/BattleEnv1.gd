@@ -72,14 +72,16 @@ func _ready():
 			magilica_scene_instances.append(battle_entity_script.instance())
 			$PartyContainer.add_child(magilica_scene_instances[i])
 			$PartyContainer.get_child(i).create(magilica_member)
-			#get_child(get_child_count() - 1).position.x = magilica_member_pos_x
-			#get_child(get_child_count() - 1).position.y = magilica_member_pos_y
+			$PartyContainer.get_child(i).position.x = magilica_member_pos_x
+			$PartyContainer.get_child(i).position.y = magilica_member_pos_y
 			
 		elif magilica_member == "chuya":
 			#magilica_scene_instances.append(aya_scene.instance())
 			magilica_scene_instances.append(battle_entity_script.instance())
 			$PartyContainer.add_child(magilica_scene_instances[i])
 			$PartyContainer.get_child(i).create(magilica_member)
+			$PartyContainer.get_child(i).position.x = magilica_member_pos_x
+			$PartyContainer.get_child(i).position.y = magilica_member_pos_y
 		
 		elif magilica_member == "samurai":
 			#magilica_scene_instances.append(samurai_scene.instance())
@@ -87,6 +89,8 @@ func _ready():
 			magilica_scene_instances.append(battle_entity_script.instance())
 			$PartyContainer.add_child(magilica_scene_instances[i])
 			$PartyContainer.get_child(i).create(magilica_member)
+			$PartyContainer.get_child(i).position.x = magilica_member_pos_x
+			$PartyContainer.get_child(i).position.y = magilica_member_pos_y
 			#get_child(get_child_count() - 1).position.x = magilica_member_pos_x
 			#get_child(get_child_count() - 1).position.y = magilica_member_pos_y
 		
@@ -113,7 +117,8 @@ func _ready():
 			dragony_scene_instances.append(battle_entity_script.instance())
 			$EnemyContainer.add_child(dragony_scene_instances[i])
 			$EnemyContainer.get_child(i).create(dragony_member)
-			
+			$EnemyContainer.get_child(i).position.x = dragony_member_pos_x
+			$EnemyContainer.get_child(i).position.y = dragony_member_pos_y
 			#get_child(get_child_count() - 1).position.x = dragony_member_pos_x
 			#get_child(get_child_count() - 1).position.y = dragony_member_pos_y
 		
@@ -123,6 +128,8 @@ func _ready():
 			dragony_scene_instances.append(battle_entity_script.instance())
 			$EnemyContainer.add_child(dragony_scene_instances[i])
 			$EnemyContainer.get_child(i).create(dragony_member)
+			$EnemyContainer.get_child(i).position.x = dragony_member_pos_x
+			$EnemyContainer.get_child(i).position.y = dragony_member_pos_y
 			#get_child(get_child_count() - 1).position.x = dragony_member_pos_x
 			#get_child(get_child_count() - 1).position.y = dragony_member_pos_y
 		
@@ -273,6 +280,9 @@ func _process(delta):
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
 				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
+			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
+				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
 				$EnemyContainer.get_child(current_attacker - 2).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
@@ -321,6 +331,9 @@ func _process(delta):
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
 				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
+			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
+				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+	
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
 				$EnemyContainer.get_child(current_attacker - 1).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
