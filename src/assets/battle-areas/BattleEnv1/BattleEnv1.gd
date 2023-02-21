@@ -506,29 +506,29 @@ func _on_ConfirmBtn_pressed():
 			$EnemyContainer.remove_child(
 				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 	
-	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
-		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "suzaku":
-					entity_list.remove(k)
-					break
-					
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-							
-		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "genby":
-					entity_list.remove(k)
-					break
-					
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-				
-		$EnemyContainer.remove_child(
-			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+	#if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
+	#	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
+	#		var k = 0
+	#		while k < len(entity_list):
+	#			if entity_list[k] == "suzaku":
+	#				entity_list.remove(k)
+	#				break
+	#				
+	#		$EnemyContainer.remove_child(
+	#			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+	#						
+	#	elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
+	#		var k = 0
+	#		while k < len(entity_list):
+	#			if entity_list[k] == "genby":
+	#				entity_list.remove(k)
+	#				break
+	#				
+	#		$EnemyContainer.remove_child(
+	#			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+	#			
+	#	$EnemyContainer.remove_child(
+	#		$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 				
 	if current_attacker >= len(entity_list):
 		current_attacker = 0
