@@ -123,10 +123,10 @@ func _ready():
 		
 		i += 1
 		j += 1
-		magilica_member_pos_y += 64
-		if j >= 9:
+		magilica_member_pos_y += 128
+		if j >= 4:
 			magilica_member_pos_y = 24
-			magilica_member_pos_x += 64
+			magilica_member_pos_x += 128
 			j = 0
 			
 		# insert more characters here
@@ -484,14 +484,17 @@ func _on_ConfirmBtn_pressed():
 	print(entity_list[current_attacker])
 			
 	$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-			
-	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
+	
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == true:
 		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
 			var k = 0
 			while k < len(entity_list):
 				if entity_list[k] == "suzaku":
 					entity_list.remove(k)
 					break
+					
+			$EnemyContainer.remove_child(
+				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 							
 		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
 			var k = 0
@@ -499,6 +502,30 @@ func _on_ConfirmBtn_pressed():
 				if entity_list[k] == "genby":
 					entity_list.remove(k)
 					break
+					
+			$EnemyContainer.remove_child(
+				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+	
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
+		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
+			var k = 0
+			while k < len(entity_list):
+				if entity_list[k] == "suzaku":
+					entity_list.remove(k)
+					break
+					
+			$EnemyContainer.remove_child(
+				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+							
+		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
+			var k = 0
+			while k < len(entity_list):
+				if entity_list[k] == "genby":
+					entity_list.remove(k)
+					break
+					
+			$EnemyContainer.remove_child(
+				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 				
 		$EnemyContainer.remove_child(
 			$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))

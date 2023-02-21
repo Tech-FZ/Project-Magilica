@@ -15,7 +15,6 @@ animations = [ {
 extents = Vector2( 32, 32 )
 
 [node name="HimariBattle" type="KinematicBody2D"]
-scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -23,3 +22,9 @@ frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -32.0
+margin_top = 48.0
+margin_right = 32.0
+margin_bottom = 64.0

@@ -23,6 +23,8 @@ var stats = {
 	spd = -1
 }
 var initialized = false
+var healthbar
+var died = false
 
 func create(entity_id):
 	
@@ -54,8 +56,9 @@ func create(entity_id):
 	
 	# populate entity stats
 	stats = entity_instance.get_stats()
-	
-	
+	healthbar = entity_instance.get_node("HealthBar")
+	healthbar.max_value = stats.hp
+	healthbar.value = stats.hp
 	
 	# set flag to assure main loop that this object is valid
 	initialized = true
@@ -76,6 +79,12 @@ func receive_damage(damage_value):
 		modified_damage -= stats.def	
 			
 	stats.hp -= modified_damage
+	
+	if stats.hp > 0:
+		healthbar.value = stats.hp
+		
+	else:
+		died = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
