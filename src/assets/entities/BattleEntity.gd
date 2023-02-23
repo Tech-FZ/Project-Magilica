@@ -83,7 +83,7 @@ func receive_damage(damage_value):
 	if stats.hp > 0:
 		healthbar.value = stats.hp
 		
-	else:
+	if healthbar.value <= 0:
 		died = true
 
 # Called when the node enters the scene tree for the first time.

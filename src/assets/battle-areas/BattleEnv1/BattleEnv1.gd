@@ -465,7 +465,10 @@ func get_enemies():
 	var i = 0
 	
 	while i < $EnemyContainer.get_child_count():
-		$EnemyList.add_item($EnemyContainer.get_child(i).get_child(0).name)
+		if $EnemyContainer.get_child(i).get_child(0).died:
+			$EnemyList.add_item($EnemyContainer.get_child(i).get_child(0).name + " (died)")
+		else:
+			$EnemyList.add_item($EnemyContainer.get_child(i).get_child(0).name)
 		#if $EnemyContainer.get_child(i).name.begins_with("Suzaku"):
 		#	$EnemyList.add_item($EnemyContainer.get_child(i).name)
 		#	
@@ -482,29 +485,31 @@ func _on_ConfirmBtn_pressed():
 	var enemy_to_attack = $EnemyList.items[$EnemyList.get_selected_items()[0]]
 	print(enemy_to_attack)
 	print(entity_list[current_attacker])
-			
-	$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+	
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == false:
+		$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 	
 	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == true:
-		if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "suzaku":
-					entity_list.remove(k)
-					break
+		if enemy_to_attack != null:
+			if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "suzaku":
+						entity_list.remove(k)
+						break
 					
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+				$EnemyContainer.remove_child(
+					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 							
-		elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "genby":
-					entity_list.remove(k)
-					break
+			elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Genby"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "genby":
+						entity_list.remove(k)
+						break
 					
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+				$EnemyContainer.remove_child(
+					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 	
 	#if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
 	#	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
