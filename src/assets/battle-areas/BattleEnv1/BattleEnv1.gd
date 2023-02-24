@@ -322,20 +322,7 @@ func _process(delta):
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
 		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
-			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-			
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-			
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-				
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-			
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
@@ -418,21 +405,8 @@ func _process(delta):
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		print(current_attacker)
 		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
-			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-	
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-				
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-			
-			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
-		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
 		
