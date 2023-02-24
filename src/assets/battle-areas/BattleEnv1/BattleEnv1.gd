@@ -395,13 +395,13 @@ func _process(delta):
 		var can_return = true
 	
 		while i < $PartyContainer.get_child_count():
-			enemies_alive.append($PartyContainer.get_child(i).died)
+			enemies_alive.append($PartyContainer.get_child(i).stats["hp"])
 			i += 1
 		
 		i = 0
 	
 		while i < len(enemies_alive):
-			if enemies_alive[i] == false:
+			if enemies_alive[i] > 0:
 				can_return = false
 				break
 		
@@ -497,13 +497,13 @@ func _process(delta):
 		var can_return = true
 	
 		while i < $PartyContainer.get_child_count():
-			enemies_alive.append($PartyContainer.get_child(i).died)
+			enemies_alive.append($PartyContainer.get_child(i).stats["hp"])
 			i += 1
 		
 		i = 0
 	
 		while i < len(enemies_alive):
-			if enemies_alive[i] == false:
+			if enemies_alive[i] > 0:
 				can_return = false
 				break
 		
@@ -618,13 +618,13 @@ func _on_ConfirmBtn_pressed():
 	var can_return = true
 	
 	while i < $EnemyContainer.get_child_count():
-		enemies_alive.append($EnemyContainer.get_child(i).died)
+		enemies_alive.append($EnemyContainer.get_child(i).stats["hp"])
 		i += 1
 		
 	i = 0
 	
 	while i < len(enemies_alive):
-		if enemies_alive[i] == false:
+		if enemies_alive[i] > 0: 
 			can_return = false
 			break
 		
