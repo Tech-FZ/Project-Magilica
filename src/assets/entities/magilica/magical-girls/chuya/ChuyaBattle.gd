@@ -2,9 +2,9 @@ extends "res://assets/entities/BattleEntity.gd"
 
 # tanky girl, slower and low ATK but high HP and DEF
 
-export(int) var chuya_hp = 1200
-export(int) var chuya_atk = 90
-export(int) var chuya_def = 150
+export(int) var chuya_hp = 1300
+export(int) var chuya_atk = 100
+export(int) var chuya_def = 160
 export(int) var chuya_spd = 3
 
 # Chuya

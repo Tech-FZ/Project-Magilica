@@ -85,6 +85,11 @@ func receive_damage(damage_value):
 		
 	if healthbar.value <= 0:
 		died = true
+		death()
+		
+func death():
+	remove_child(get_child(0))
+	get_parent().remove_child(self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
