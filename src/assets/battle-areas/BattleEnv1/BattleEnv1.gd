@@ -545,7 +545,7 @@ func _on_ConfirmBtn_pressed():
 	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == false:
 		$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 	
-	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died:
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
 		if enemy_to_attack != null:
 			if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
 				var k = 0

@@ -80,8 +80,7 @@ func receive_damage(damage_value):
 			
 	stats.hp -= modified_damage
 	
-	if stats.hp > 0:
-		healthbar.value = stats.hp
+	healthbar.value = stats.hp
 		
 	if healthbar.value <= 0:
 		died = true
