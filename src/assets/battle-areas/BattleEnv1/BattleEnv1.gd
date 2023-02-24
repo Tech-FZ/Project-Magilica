@@ -390,25 +390,28 @@ func _process(delta):
 				current_attacker = 0
 				print(entity_list[current_attacker])
 				
-		#var i = 0
-		#var enemies_alive = []
-		#var can_return = true
+		var i = 0
+		var enemies_alive = []
+		var can_return = true
 	
-		#while i < $PartyContainer.get_child_count():
-		#	enemies_alive.append($PartyContainer.get_child(i).died)
-		#	i += 1
+		while i < $PartyContainer.get_child_count():
+			enemies_alive.append($PartyContainer.get_child(i).died)
+			i += 1
 		
-		#i = 0
+		i = 0
 	
-		#while i < len(enemies_alive):
-		#	if enemies_alive[i] == false:
-		#		can_return = false
-		#		break
+		while i < len(enemies_alive):
+			if enemies_alive[i] == false:
+				can_return = false
+				break
 		
-		#	i += 1
+		i += 1
 	
-		#if can_return:
-		#	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		if can_return:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		
+		if $PartyContainer.get_child_count() == 0 or $EnemyContainer.get_child_count() == 0:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 			
 	elif entity_list[current_attacker] == "genby":
 		$EnemyList.clear()
@@ -468,8 +471,14 @@ func _process(delta):
 						if entity_list[k] == "samurai":
 							entity_list.remove(k)
 							break
-						
-				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
+				
+				$PartyContainer.get_child(
+					int(to_be_attacked)
+					).remove_child($PartyContainer.get_child(
+						int(to_be_attacked)).get_child(0))
+				
+				$PartyContainer.remove_child(
+					$PartyContainer.get_child(int(to_be_attacked)))
 		
 		
 		
@@ -483,25 +492,28 @@ func _process(delta):
 				current_attacker = 0
 				print(entity_list[current_attacker])
 		
-		#var i = 0
-		#var enemies_alive = []
-		#var can_return = true
+		var i = 0
+		var enemies_alive = []
+		var can_return = true
 	
-		#while i < $PartyContainer.get_child_count():
-		#	enemies_alive.append($PartyContainer.get_child(i).died)
-		#	i += 1
+		while i < $PartyContainer.get_child_count():
+			enemies_alive.append($PartyContainer.get_child(i).died)
+			i += 1
 		
-		#i = 0
+		i = 0
 	
-		#while i < len(enemies_alive):
-		#	if enemies_alive[i] == false:
-		#		can_return = false
-		#		break
+		while i < len(enemies_alive):
+			if enemies_alive[i] == false:
+				can_return = false
+				break
 		
-		#	i += 1
+			i += 1
 	
-		#if can_return:
-		#	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		if can_return:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		
+		if $PartyContainer.get_child_count() == 0 or $EnemyContainer.get_child_count() == 0:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 		
 		# insert more characters here
 
@@ -541,7 +553,12 @@ func _on_ConfirmBtn_pressed():
 					if entity_list[k] == "suzaku":
 						entity_list.remove(k)
 						break
-					
+				
+				$EnemyContainer.get_child(
+					$EnemyList.get_selected_items()[0]
+					).remove_child($EnemyContainer.get_child(
+						$EnemyList.get_selected_items()[0]).get_child(0))
+				
 				$EnemyContainer.remove_child(
 					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 							
@@ -551,7 +568,12 @@ func _on_ConfirmBtn_pressed():
 					if entity_list[k] == "genby":
 						entity_list.remove(k)
 						break
-					
+				
+				$EnemyContainer.get_child(
+					$EnemyList.get_selected_items()[0]
+					).remove_child($EnemyContainer.get_child(
+						$EnemyList.get_selected_items()[0]).get_child(0))
+				
 				$EnemyContainer.remove_child(
 					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 					
@@ -591,25 +613,28 @@ func _on_ConfirmBtn_pressed():
 			current_attacker = 0
 			print(entity_list[current_attacker])
 			
-	#var i = 0
-	#var enemies_alive = []
-	#var can_return = true
+	var i = 0
+	var enemies_alive = []
+	var can_return = true
 	
-	#while i < $EnemyContainer.get_child_count():
-	#	enemies_alive.append($EnemyContainer.get_child(i).died)
-	#	i += 1
+	while i < $EnemyContainer.get_child_count():
+		enemies_alive.append($EnemyContainer.get_child(i).died)
+		i += 1
 		
-	#i = 0
+	i = 0
 	
-	#while i < len(enemies_alive):
-	#	if enemies_alive[i] == false:
-	#		can_return = false
-	#		break
+	while i < len(enemies_alive):
+		if enemies_alive[i] == false:
+			can_return = false
+			break
 		
-	#	i += 1
+		i += 1
 	
-	#if can_return:
-	#	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+	if can_return:
+		get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+	
+	if $PartyContainer.get_child_count() == 0 or $EnemyContainer.get_child_count() == 0:
+		get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 			
 	$EnemyList.clear()
 
