@@ -321,26 +321,26 @@ func _process(delta):
 		$EnemyList.clear()
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
-		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - 4).stats["hp"] > 0:
+		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
-				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
-				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 				
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
-				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				$EnemyContainer.get_child(current_attacker - 4).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
 		
-			if health_of_char <= 0 or $PartyContainer.get_child(int(to_be_attacked)).died:
+			if health_of_char <= 0:
 				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
 					var k = 0
 					while k < len(entity_list):
@@ -390,50 +390,50 @@ func _process(delta):
 				current_attacker = 0
 				print(entity_list[current_attacker])
 				
-		var i = 0
-		var enemies_alive = []
-		var can_return = true
+		#var i = 0
+		#var enemies_alive = []
+		#var can_return = true
 	
-		while i < $PartyContainer.get_child_count():
-			enemies_alive.append($PartyContainer.get_child(i).died)
-			i += 1
+		#while i < $PartyContainer.get_child_count():
+		#	enemies_alive.append($PartyContainer.get_child(i).died)
+		#	i += 1
 		
-		i = 0
+		#i = 0
 	
-		while i < len(enemies_alive):
-			if enemies_alive[i] == false:
-				can_return = false
-				break
+		#while i < len(enemies_alive):
+		#	if enemies_alive[i] == false:
+		#		can_return = false
+		#		break
 		
-			i += 1
+		#	i += 1
 	
-		if can_return:
-			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		#if can_return:
+		#	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 			
 	elif entity_list[current_attacker] == "genby":
 		$EnemyList.clear()
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		print(current_attacker)
-		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - 3).stats["hp"] > 0:
+		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
 			if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
-				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
-				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 	
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
-				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 				
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
-				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
-				$EnemyContainer.get_child(current_attacker - 3).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+				$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
 		
-			if health_of_char <= 0 or $PartyContainer.get_child(int(to_be_attacked)).died:
+			if health_of_char <= 0:
 				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
 					var k = 0
 					while k < len(entity_list):
@@ -483,25 +483,25 @@ func _process(delta):
 				current_attacker = 0
 				print(entity_list[current_attacker])
 		
-		var i = 0
-		var enemies_alive = []
-		var can_return = true
+		#var i = 0
+		#var enemies_alive = []
+		#var can_return = true
 	
-		while i < $PartyContainer.get_child_count():
-			enemies_alive.append($PartyContainer.get_child(i).died)
-			i += 1
+		#while i < $PartyContainer.get_child_count():
+		#	enemies_alive.append($PartyContainer.get_child(i).died)
+		#	i += 1
 		
-		i = 0
+		#i = 0
 	
-		while i < len(enemies_alive):
-			if enemies_alive[i] == false:
-				can_return = false
-				break
+		#while i < len(enemies_alive):
+		#	if enemies_alive[i] == false:
+		#		can_return = false
+		#		break
 		
-			i += 1
+		#	i += 1
 	
-		if can_return:
-			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		#if can_return:
+		#	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 		
 		# insert more characters here
 
@@ -533,7 +533,7 @@ func _on_ConfirmBtn_pressed():
 	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == false:
 		$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 	
-	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died or $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_child(0).stats["hp"] <= 0:
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died:
 		if enemy_to_attack != null:
 			if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
 				var k = 0
@@ -591,25 +591,25 @@ func _on_ConfirmBtn_pressed():
 			current_attacker = 0
 			print(entity_list[current_attacker])
 			
-	var i = 0
-	var enemies_alive = []
-	var can_return = true
+	#var i = 0
+	#var enemies_alive = []
+	#var can_return = true
 	
-	while i < $EnemyContainer.get_child_count():
-		enemies_alive.append($EnemyContainer.get_child(i).died)
-		i += 1
+	#while i < $EnemyContainer.get_child_count():
+	#	enemies_alive.append($EnemyContainer.get_child(i).died)
+	#	i += 1
 		
-	i = 0
+	#i = 0
 	
-	while i < len(enemies_alive):
-		if enemies_alive[i] == false:
-			can_return = false
-			break
+	#while i < len(enemies_alive):
+	#	if enemies_alive[i] == false:
+	#		can_return = false
+	#		break
 		
-		i += 1
+	#	i += 1
 	
-	if can_return:
-		get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+	#if can_return:
+	#	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 			
 	$EnemyList.clear()
 
