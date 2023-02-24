@@ -340,7 +340,7 @@ func _process(delta):
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
 		
-			if health_of_char <= 0:
+			if health_of_char <= 0 or $PartyContainer.get_child(int(to_be_attacked)).died:
 				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
 					var k = 0
 					while k < len(entity_list):
@@ -378,6 +378,26 @@ func _process(delta):
 							
 				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
 		
+		var i = 0
+		var enemies_alive = []
+		var can_return = true
+	
+		while i < $PartyContainer.get_child_count():
+			enemies_alive.append($PartyContainer.get_child(i).died)
+			i += 1
+		
+		i = 0
+	
+		while i < len(enemies_alive):
+			if enemies_alive[i] == false:
+				can_return = false
+				break
+		
+			i += 1
+	
+		if can_return:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		
 		if current_attacker >= len(entity_list):
 			current_attacker = 0
 			print(entity_list[current_attacker])
@@ -411,7 +431,7 @@ func _process(delta):
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
 			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
 		
-			if health_of_char <= 0:
+			if health_of_char <= 0 or $PartyContainer.get_child(int(to_be_attacked)).died:
 				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
 					var k = 0
 					while k < len(entity_list):
@@ -448,6 +468,26 @@ func _process(delta):
 							break
 						
 				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
+		
+		var i = 0
+		var enemies_alive = []
+		var can_return = true
+	
+		while i < $PartyContainer.get_child_count():
+			enemies_alive.append($PartyContainer.get_child(i).died)
+			i += 1
+		
+		i = 0
+	
+		while i < len(enemies_alive):
+			if enemies_alive[i] == false:
+				can_return = false
+				break
+		
+			i += 1
+	
+		if can_return:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 		
 		if current_attacker >= len(entity_list):
 			current_attacker = 0
@@ -489,7 +529,7 @@ func _on_ConfirmBtn_pressed():
 	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == false:
 		$PartyContainer.get_child(current_attacker).deal_damage($EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
 	
-	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died == true:
+	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).died or $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_child(0).stats["hp"] <= 0:
 		if enemy_to_attack != null:
 			if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
 				var k = 0
@@ -510,6 +550,26 @@ func _on_ConfirmBtn_pressed():
 					
 				$EnemyContainer.remove_child(
 					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+					
+	var i = 0
+	var enemies_alive = []
+	var can_return = true
+	
+	while i < $EnemyContainer.get_child_count():
+		enemies_alive.append($EnemyContainer.get_child(i).died)
+		i += 1
+		
+	i = 0
+	
+	while i < len(enemies_alive):
+		if enemies_alive[i] == false:
+			can_return = false
+			break
+		
+		i += 1
+	
+	if can_return:
+		get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
 	
 	#if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).stats["hp"] <= 0:
 	#	if $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Suzaku"):
