@@ -12,6 +12,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if $MainMenuBtn.pressed:
+		get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+	
 	# applies all battle participants
 	if $StartBtn.pressed:
 		if $AyaCheckbox.pressed:

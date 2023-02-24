@@ -642,3 +642,21 @@ func _on_ConfirmBtn_pressed():
 func _on_AttackBtn_pressed():
 	get_enemies()
 	$ConfirmBtn.disabled = false
+
+
+func _on_PassBtn_pressed():
+	if current_attacker >= len(entity_list):
+		current_attacker = 0
+		print(entity_list[current_attacker])
+				
+	else:
+		current_attacker += 1
+		if current_attacker >= len(entity_list):
+			current_attacker = 0
+			print(entity_list[current_attacker])
+			
+	$EnemyList.clear()
+
+
+func _on_RetreatBtn_pressed():
+	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
