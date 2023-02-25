@@ -16,6 +16,8 @@ var magilica_scene_instances = []
 var dragony_scene_instances = []
 var entity_list = []
 var current_attacker = 0
+var initial_number_of_entities = 0
+var current_number_of_entities = 0
 
 var battle_entity_script = preload("res://assets/entities/BattleEntity.tscn")
 
@@ -220,25 +222,48 @@ func _ready():
 			
 	# insert more characters here
 	print(len(entity_list))
+	#initial_number_of_entities = len(entity_list)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# That's why you and the enemy can attack each other
 	if entity_list[current_attacker] == "aya":
-		$CurrentChar.text = "Aya"
+		if $PartyContainer.get_child(current_attacker).get_node("AyaBattle") != null:
+			$CurrentChar.text = "Aya"
+			
+		else:
+			entity_list.remove(current_attacker)
 		
 	elif entity_list[current_attacker] == "chuya":
-		$CurrentChar.text = "Chuya"
+		if $PartyContainer.get_child(current_attacker).get_node("ChuyaBattle") != null:
+			$CurrentChar.text = "Chuya"
+			
+		else:
+			entity_list.remove(current_attacker)
 		
 	elif entity_list[current_attacker] == "himari":
-		$CurrentChar.text = "Himari"
+		if $PartyContainer.get_child(current_attacker).get_node("HimariBattle") != null:
+			$CurrentChar.text = "Himari"
+			
+		else:
+			entity_list.remove(current_attacker)
 		
 	elif entity_list[current_attacker] == "homura":
-		$CurrentChar.text = "Homura"
+		if $PartyContainer.get_child(current_attacker).get_node("HomuraBattle") != null:
+			$CurrentChar.text = "Homura"
+			
+		else:
+			entity_list.remove(current_attacker)
 		
 	elif entity_list[current_attacker] == "samurai":
-		$CurrentChar.text = "Samurai"
+		# may need to be replaced when the story progresses
+		if $PartyContainer.get_child(current_attacker).get_node("SamuraiBattle") != null:
+			$CurrentChar.text = "Samurai"
+			
+		else:
+			entity_list.remove(current_attacker)
 
 	elif entity_list[current_attacker] == "suzaku":
 		$EnemyList.clear()
