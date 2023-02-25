@@ -64,6 +64,13 @@ margin_right = 1159.0
 margin_bottom = 256.0
 text = "Suzaku"
 
+[node name="SeiryuCheckbox" type="CheckBox" parent="."]
+margin_left = 1080.0
+margin_top = 275.0
+margin_right = 1159.0
+margin_bottom = 299.0
+text = "Seiryu"
+
 [node name="BattleLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5

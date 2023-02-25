@@ -10,6 +10,7 @@ var homura_scene = preload("res://assets/entities/magilica/magical-girls/homura/
 var samurai_scene = preload("res://assets/entities/magilica/samurai/SamuraiBattle.tscn")
 var genby_scene = preload("res://assets/entities/dragony/dragon_kings/genby/GenbyBattle.tscn")
 var suzaku_scene = preload("res://assets/entities/dragony/dragon_kings/suzaku/SuzakuBattle.tscn")
+var seiryu_scene = preload("res://assets/entities/dragony/dragon_kings/seiryu/SeiryuPrototype.tscn")
 # insert more characters here
 var magilica_scene_instances = []
 var dragony_scene_instances = []
@@ -67,6 +68,11 @@ func _ready():
 			
 			elif battle_config_army[0] == "suzaku":
 				entity_list.append("suzaku")
+				
+		elif battle_config_army[0] == "seiryu":
+			dragony_army.append(battle_config_army[0])
+			if battle_config_army[0] == "seiryu":
+				entity_list.append("seiryu")
 				
 		# insert more characters here
 			
@@ -132,25 +138,25 @@ func _ready():
 	# Now all Dragonian members are added here
 	for dragony_member in dragony_army:
 		if dragony_member == "genby":
-			#dragony_scene_instances.append(genby_scene.instance())
 			dragony_scene_instances.append(battle_entity_script.instance())
 			$EnemyContainer.add_child(dragony_scene_instances[i])
 			$EnemyContainer.get_child(i).create(dragony_member)
 			$EnemyContainer.get_child(i).position.x = dragony_member_pos_x
 			$EnemyContainer.get_child(i).position.y = dragony_member_pos_y
-			#get_child(get_child_count() - 1).position.x = dragony_member_pos_x
-			#get_child(get_child_count() - 1).position.y = dragony_member_pos_y
 		
 		elif dragony_member == "suzaku":
-			#dragony_scene_instances.append(suzaku_scene.instance())
-			#$EnemyContainer.add_child(dragony_scene_instances[i])
 			dragony_scene_instances.append(battle_entity_script.instance())
 			$EnemyContainer.add_child(dragony_scene_instances[i])
 			$EnemyContainer.get_child(i).create(dragony_member)
 			$EnemyContainer.get_child(i).position.x = dragony_member_pos_x
 			$EnemyContainer.get_child(i).position.y = dragony_member_pos_y
-			#get_child(get_child_count() - 1).position.x = dragony_member_pos_x
-			#get_child(get_child_count() - 1).position.y = dragony_member_pos_y
+			
+		elif dragony_member == "seiryu":
+			dragony_scene_instances.append(battle_entity_script.instance())
+			$EnemyContainer.add_child(dragony_scene_instances[i])
+			$EnemyContainer.get_child(i).create(dragony_member)
+			$EnemyContainer.get_child(i).position.x = dragony_member_pos_x
+			$EnemyContainer.get_child(i).position.y = dragony_member_pos_y
 		
 		i += 1
 		
@@ -164,6 +170,12 @@ func _ready():
 		# insert more characters here
 	
 	# Now the battle order is being defined
+	i = 0
+	
+	for dragony_entity in dragony_scene_instances:
+		if dragony_entity.get_child(0) == seiryu_scene.instance():
+			entity_list.append("seiryu")
+	
 	i = 0
 	
 	for dragony_entity in dragony_scene_instances:
@@ -275,7 +287,7 @@ func _process(delta):
 							break
 							
 				$PartyContainer.remove_child($PartyContainer.get_child(int(to_be_attacked)))
-		
+				current_attacker = 0
 		
 		
 		if current_attacker >= len(entity_list):
@@ -365,7 +377,96 @@ func _process(delta):
 				$PartyContainer.remove_child(
 					$PartyContainer.get_child(int(to_be_attacked)))
 		
+				current_attacker = 0
 		
+		if current_attacker >= len(entity_list):
+			current_attacker = 0
+			print(entity_list[current_attacker])
+				
+		else:
+			current_attacker += 1
+			if current_attacker >= len(entity_list):
+				current_attacker = 0
+				print(entity_list[current_attacker])
+		
+		var i = 0
+		var enemies_alive = []
+		var can_return = true
+	
+		while i < $PartyContainer.get_child_count():
+			enemies_alive.append($PartyContainer.get_child(i).stats["hp"])
+			i += 1
+		
+		i = 0
+	
+		while i < len(enemies_alive):
+			if enemies_alive[i] > 0:
+				can_return = false
+				break
+		
+			i += 1
+	
+		if can_return:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		
+		if $PartyContainer.get_child_count() == 0 or $EnemyContainer.get_child_count() == 0:
+			get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")
+		
+	elif entity_list[current_attacker] == "seiryu":
+		$EnemyList.clear()
+		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
+		print(current_attacker)
+		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
+			$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
+			
+			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
+			var health_of_char = $PartyContainer.get_child(int(to_be_attacked)).stats["hp"]
+		
+			if health_of_char <= 0:
+				if $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Aya"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "aya":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Chuya"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "chuya":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Himari"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "himari":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Homura"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "homura":
+							entity_list.remove(k)
+							break
+							
+				elif $PartyContainer.get_child(int(to_be_attacked)).get_child(0).name.begins_with("Samurai"):
+					var k = 0
+					while k < len(entity_list):
+						if entity_list[k] == "samurai":
+							entity_list.remove(k)
+							break
+				
+				$PartyContainer.get_child(
+					int(to_be_attacked)
+					).remove_child($PartyContainer.get_child(
+						int(to_be_attacked)).get_child(0))
+				
+				$PartyContainer.remove_child(
+					$PartyContainer.get_child(int(to_be_attacked)))
+		
+				current_attacker = 0
 		
 		if current_attacker >= len(entity_list):
 			current_attacker = 0
@@ -446,6 +547,21 @@ func _on_ConfirmBtn_pressed():
 				var k = 0
 				while k < len(entity_list):
 					if entity_list[k] == "genby":
+						entity_list.remove(k)
+						break
+				
+				$EnemyContainer.get_child(
+					$EnemyList.get_selected_items()[0]
+					).remove_child($EnemyContainer.get_child(
+						$EnemyList.get_selected_items()[0]).get_child(0))
+				
+				$EnemyContainer.remove_child(
+					$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
+					
+			elif $EnemyContainer.get_child($EnemyList.get_selected_items()[0]).get_node(enemy_to_attack).name.begins_with("Seiryu"):
+				var k = 0
+				while k < len(entity_list):
+					if entity_list[k] == "seiryu":
 						entity_list.remove(k)
 						break
 				

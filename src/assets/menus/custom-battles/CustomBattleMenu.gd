@@ -37,6 +37,9 @@ func _process(_delta):
 			
 		if $SuzakuCheckbox.pressed:
 			write_as_txt += "suzaku*1\n"
+			
+		if $SeiryuCheckbox.pressed:
+			write_as_txt += "seiryu*1\n"
 		
 		# creates battle.txt
 		var battleFile = File.new()
