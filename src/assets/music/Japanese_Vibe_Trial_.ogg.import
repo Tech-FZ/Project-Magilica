@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Japanese_Vibe_Trial_.ogg-0b05fbd5c0815a19eda0f19435e1a8fd.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Japanese_Vibe_Trial_.ogg"
+dest_files=[ "res://.import/Japanese_Vibe_Trial_.ogg-0b05fbd5c0815a19eda0f19435e1a8fd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

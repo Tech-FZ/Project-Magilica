@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/menus/main-menu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/music/Japanese_Vibe_Trial_.ogg" type="AudioStream" id=2]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -27,5 +28,9 @@ margin_top = 680.0
 margin_right = 242.0
 margin_bottom = 694.0
 text = "Project Magilica, Version 0.1_mggj"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
 
 [connection signal="pressed" from="PlayBtn" to="." method="_on_PlayBtn_pressed"]
