@@ -14,11 +14,7 @@ Zejbo Sexbaum
 
 ## Art
 
-Lucien
-
-KonaTizer
-
-sona
+Polegacy
 
 ## Music and sound effects
 
