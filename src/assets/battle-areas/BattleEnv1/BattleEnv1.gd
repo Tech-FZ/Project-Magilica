@@ -269,22 +269,7 @@ func _process(delta):
 		$EnemyList.clear()
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
-		if $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] <= 0:
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "suzaku":
-					entity_list.remove(k)
-					break
-				
-			$EnemyContainer.get_child(
-				$EnemyList.get_selected_items()[0]
-				).remove_child($EnemyContainer.get_child(
-					$EnemyList.get_selected_items()[0]).get_child(0))
-				
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-		
-		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
+		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()) != null:
 			$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 		
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
@@ -368,22 +353,7 @@ func _process(delta):
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		print(current_attacker)
 		
-		if $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] <= 0:
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "genby":
-					entity_list.remove(k)
-					break
-				
-			$EnemyContainer.get_child(
-				$EnemyList.get_selected_items()[0]
-				).remove_child($EnemyContainer.get_child(
-					$EnemyList.get_selected_items()[0]).get_child(0))
-				
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-		
-		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
+		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()) != null:
 			$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
@@ -472,23 +442,8 @@ func _process(delta):
 		$EnemyList.clear()
 		var to_be_attacked = rand_range(0, $PartyContainer.get_child_count() - 1)
 		
-		if $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] <= 0:
-			var k = 0
-			while k < len(entity_list):
-				if entity_list[k] == "seiryu":
-					entity_list.remove(k)
-					break
-				
-			$EnemyContainer.get_child(
-				$EnemyList.get_selected_items()[0]
-				).remove_child($EnemyContainer.get_child(
-					$EnemyList.get_selected_items()[0]).get_child(0))
-				
-			$EnemyContainer.remove_child(
-				$EnemyContainer.get_child($EnemyList.get_selected_items()[0]))
-		
 		print(current_attacker)
-		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).stats["hp"] > 0:
+		if $PartyContainer.get_child_count() > 0 and $EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()) != null:
 			$EnemyContainer.get_child(current_attacker - $PartyContainer.get_child_count()).deal_damage($PartyContainer.get_child(int(to_be_attacked)))
 			
 			print($PartyContainer.get_child(int(to_be_attacked)).stats["hp"])
