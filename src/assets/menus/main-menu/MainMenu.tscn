@@ -27,7 +27,7 @@ margin_left = 24.0
 margin_top = 680.0
 margin_right = 242.0
 margin_bottom = 694.0
-text = "Project Magilica, Version 0.1_mggj"
+text = "Project Magilica, Version 0.2_mggj"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
