@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/battle-areas/BattleEnv1/BattleEnv1.gd" type="Script" id=1]
+[ext_resource path="res://assets/music/Dragon_Shredd_NoDistortion_HiShelf.ogg" type="AudioStream" id=2]
 
 [node name="BattleEnv1" type="Node2D"]
 script = ExtResource( 1 )
@@ -55,6 +56,10 @@ margin_bottom = 624.0
 margin_right = 1256.0
 margin_bottom = 624.0
 grow_horizontal = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
 
 [connection signal="pressed" from="AttackBtn" to="." method="_on_AttackBtn_pressed"]
 [connection signal="pressed" from="PassBtn" to="." method="_on_PassBtn_pressed"]

@@ -16,9 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_PlayBtn_pressed():
-	get_tree().change_scene("res://assets/menus/custom-battles/CustomBattleMenu.tscn")
-
-
-func _on_CreditsBtn_pressed():
-	get_tree().change_scene("res://assets/menus/credits/Credits.tscn")
+func _on_Button_pressed():
+	get_tree().change_scene("res://assets/menus/main-menu/MainMenu.tscn")

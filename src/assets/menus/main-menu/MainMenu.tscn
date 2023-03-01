@@ -22,6 +22,13 @@ margin_right = 662.0
 margin_bottom = 268.0
 text = "Play"
 
+[node name="CreditsBtn" type="Button" parent="."]
+margin_left = 616.0
+margin_top = 281.0
+margin_right = 673.0
+margin_bottom = 301.0
+text = "Credits"
+
 [node name="VersionLbl" type="Label" parent="."]
 margin_left = 24.0
 margin_top = 680.0
@@ -34,3 +41,4 @@ stream = ExtResource( 2 )
 autoplay = true
 
 [connection signal="pressed" from="PlayBtn" to="." method="_on_PlayBtn_pressed"]
+[connection signal="pressed" from="CreditsBtn" to="." method="_on_CreditsBtn_pressed"]
