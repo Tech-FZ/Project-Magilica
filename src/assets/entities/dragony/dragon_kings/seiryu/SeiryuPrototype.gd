@@ -3,7 +3,7 @@ extends "res://assets/entities/BattleEntity.gd"
 # standard stats girl
 
 export(int) var seiryu_hp = 1700
-export(int) var seiryu_atk = 280
+export(int) var seiryu_atk = 180
 export(int) var seiryu_def = 95
 export(int) var seiryu_spd = 25
 
