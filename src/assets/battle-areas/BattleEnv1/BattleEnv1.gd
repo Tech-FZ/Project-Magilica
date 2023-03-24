@@ -79,7 +79,7 @@ func _ready():
 		# insert more characters here
 			
 	
-	var magilica_member_pos_x = 24
+	var magilica_member_pos_x = 36
 	var magilica_member_pos_y = 24
 	var i = 0
 	var j = 0
@@ -132,7 +132,7 @@ func _ready():
 		# insert more characters here
 		
 	
-	var dragony_member_pos_x = 1256
+	var dragony_member_pos_x = 1244
 	var dragony_member_pos_y = 24
 	i = 0
 	j = 0
