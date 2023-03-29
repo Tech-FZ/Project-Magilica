@@ -1,30 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/entities/magilica/magical-girls/chuya/ChuyaBattle.gd" type="Script" id=1]
-[ext_resource path="res://assets/entities/placeholder/placeholder32.bmp" type="Texture" id=2]
+[ext_resource path="res://assets/entities/magilica/magical-girls/chuya/ChuyaIdle2.png" type="Texture" id=2]
+[ext_resource path="res://assets/entities/magilica/magical-girls/chuya/ChuyaIdle1.png" type="Texture" id=3]
+[ext_resource path="res://assets/entities/magilica/magical-girls/chuya/ChuyaIdle3.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 32, 32 )
 
 [node name="ChuyaBattle" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+playing = true
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = -24.0
-margin_top = 24.0
-margin_right = 24.0
-margin_bottom = 40.0
+margin_left = -32.0
+margin_top = 40.0
+margin_right = 32.0
+margin_bottom = 56.0
