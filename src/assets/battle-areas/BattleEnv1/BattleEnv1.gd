@@ -132,8 +132,8 @@ func _ready():
 		# insert more characters here
 		
 	
-	var dragony_member_pos_x = 1244
-	var dragony_member_pos_y = 24
+	var dragony_member_pos_x = 1224
+	var dragony_member_pos_y = 56
 	i = 0
 	j = 0
 	
@@ -163,10 +163,10 @@ func _ready():
 		i += 1
 		
 		j += 1
-		dragony_member_pos_y += 64
+		dragony_member_pos_y += 128
 		if j >= 9:
-			dragony_member_pos_y = 24
-			dragony_member_pos_x -= 64
+			dragony_member_pos_y = 48
+			dragony_member_pos_x -= 128
 			j = 0
 			
 		# insert more characters here
